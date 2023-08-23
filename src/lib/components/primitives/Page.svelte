@@ -12,6 +12,6 @@
     <meta name="keywords" content={keywords} />
   {/if}
 </svelte:head>
-<main class="relative max-w-[1024px] mx-auto z-10 px-6">
+<main class="relative max-w-[1240px] mx-auto z-10 px-6 md:px-12 lg:px-24">
   <slot />
 </main>
