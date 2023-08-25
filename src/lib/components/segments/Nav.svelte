@@ -1,7 +1,9 @@
 <script lang="ts">
   import { page } from "$app/stores";
+  import {onMount} from "svelte";
 
   let isOpen = false;
+  let scrollPos = 0;
 
   const routes = [
     ["Home", "/"],
@@ -10,10 +12,16 @@
     ["GitHub", "/github"],
   ];
 
+  onMount(() => {
+    window.addEventListener("scroll", (event) => {
+      scrollPos = window.pageYOffset;
+    });
+  });
+
   $: path = $page.url.pathname;
 </script>
 
-<nav class="sticky top-0 px-6 py-4 z-50 md:px-12 lg:px-24 lg:max-w-[1240px] lg:py-2 lg:mx-auto">
+<nav data-background-visible={scrollPos > 0} class="sticky top-0 px-6 py-4 z-50 duration-300 data-[background-visible=true]:backdrop-blur-sm data-[background-visible=true]:bg-zinc-900/75 md:px-12 lg:backdrop-blur-none! lg:background-transparent! lg:px-24 lg:max-w-[1240px] lg:py-2 lg:mx-auto">
   <button aria-controls="nav-menu" on:click={() => {isOpen = !isOpen}} class="lg:hidden">
     <i class="fa-solid fa-bars text-4xl opacity-75" />
     <span class="sr-only">open nav</span>
