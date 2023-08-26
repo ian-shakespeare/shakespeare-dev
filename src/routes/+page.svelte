@@ -1,35 +1,59 @@
 <script lang="ts">
   import Page from "$lib/components/primitives/Page.svelte";
-  import ExpandableImage from "$lib/components/segments/ExpandableImage.svelte";
 
   const screenshots = [
     {
       alt: "weboost screenshot",
       src: "https://res.cloudinary.com/dpos2lw94/image/upload/v1692931766/weboost_screenshot_pj9fjk.png",
-      caption: `Weboost Ecommerce web application. Built using TypeScript and NextJS.`
+      href: "/projects#weboost"
     },
     {
       alt: "portfolio screenshot",
       src: "https://res.cloudinary.com/dpos2lw94/image/upload/v1692931766/portfolio_screenshot_ivzbea.png",
-      caption: `Portfolio and CV SPA. Built with SvelteKit.`
+      href: "/projects#portfolio"
     },
     {
       alt: "flightowl screenshot",
       src: "https://res.cloudinary.com/dpos2lw94/image/upload/v1692931766/flightowl_screenshot_chgblm.png",
-      caption: `FlightOwl flight search engine. Built with Go, TypeScript, and SvelteKit.`
+      href: "/projects#flightowl"
     },
   ];
   
-  const technologyIcons = {
-    prod: [
-      "devicon-typescript-plain",
-      "devicon-react-original",
-      "devicon-go-original-wordmark",
-      "devicon-kotlin-plain",
-      "devicon-python-plain",
-      "devicon-javascript-plain",
-    ],
-  };
+  const technologyIcons = [
+    {
+      label: "In production",
+      icons: [
+        "devicon-typescript-plain",
+        "devicon-nextjs-original",
+        "devicon-react-original",
+        "devicon-github-original",
+        "devicon-go-original-wordmark",
+        "devicon-kotlin-plain",
+        "devicon-python-plain",
+        "devicon-javascript-plain",
+        "devicon-heroku-original",
+      ]
+    },
+    {
+      label: "In projects",
+      icons: [
+        "devicon-svelte-plain",
+        "devicon-cplusplus-plain",
+        "devicon-sqlite-plain",
+        "devicon-postgresql-plain",
+        "devicon-swift-plain",
+        "devicon-django-plain",
+      ]
+    },
+    {
+      label: "For fun",
+      icons: [
+        "devicon-rust-plain",
+        "devicon-csharp-plain",
+        "devicon-elixir-plain",
+      ]
+    }
+  ];
 </script>
 
 <header class="grid content-center py-32 px-6 relative z-10 gap-4 max-w-[1240px] mx-auto md:justify-center">
@@ -51,29 +75,37 @@
   </div>
 </header>
 <Page title="Home - Shakespeare Dev" description="TODO(ian) add a proper description">
-  <div class="grid bg-zinc-900/75 backdrop-blur-sm p-4">
+  <div class="grid bg-zinc-900/75 backdrop-blur-sm p-4 pb-16">
     <section class="grid gap-4">
-      <h4 class="text-2xl text-center md:text-3xl">Things I've worked on.</h4>
-      <ul class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {#each screenshots as screenshot}
+      <h4 class="text-2xl text-center md:text-3xl">Things I've worked on</h4>
+      <ul class="grid gap-2 md:grid-cols-2 lg:grid-cols-3">
+        {#each screenshots as {alt, src, href}}
           <li>
-            <ExpandableImage
-              {...screenshot}
-            />
+            <a href={href}>
+              <img alt={alt} src={src} class="border-8 border-transparent duration-300 rounded-md hover:border-zinc-700" />
+            </a>
           </li>
         {/each}
       </ul>
     </section>
-    <hr class="border-zinc-600 my-8" />
-    <section>
-      <h4 class="text-2xl text-center md:text-3xl">Technologies I've used.</h4>
-      <ul>
-      {#each technologyIcons.prod as prodIcon}
-        <li>
-          <i class={`text-8xl ${prodIcon}`} />
-        </li>
+    <hr class="border-zinc-700 my-8" />
+    <section class="grid gap-8">
+      <h4 class="text-2xl text-center md:text-3xl">Technologies I've used</h4>
+      {#each technologyIcons as {label, icons}}
+        <div class="grid gap-4">
+          <h5 class="text-xl text-zinc-300">{label}:</h5>
+          <ul class="flex flex-wrap gap-4 justify-center md:justify-left">
+          {#each icons as icon}
+            <li>
+              <i class={`text-8xl text-zinc-700 duration-300 cursor-pointer hover:text-white ${icon}`} />
+            </li>
+          {/each}
+          </ul>
+        </div>
       {/each}
-      </ul>
+      <p class="text-zinc-600 text-center">
+        Icons provided by <a href="https://devicon.dev/" class="underline">Devicon</a>
+      </p>
     </section>
   </div>
 </Page>
