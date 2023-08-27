@@ -61,15 +61,15 @@
 </script>
 
 <Page title="Projects - Shakespeare Dev" description="Projects page for Ian Shakespeare, Software Developer">
-  <h1 class="text-3xl text-center mb-8 bg-gradient-to-r bg-clip-text text-transparent from-emerald-400 to-blue-400">
+  <h1 class="text-3xl text-center bg-gradient-to-r bg-clip-text text-transparent from-emerald-400 to-blue-400">
     A Couple Projects I've Worked On
   </h1>
-  <div class="mt-4">
+  <div class="mt-4 mb-8">
     {#each projects as { id, title, subtitle, description, img }}
       <section
         id={id}
         data-selected={id === hash.replace("#", "")}
-        class="group grid gap-8 py-16 border-b border-zinc-700 first:pt-12 last:border-b-0 last:rounded-b-md data-[selected=true]:bg-zinc-800/50 lg:grid-cols-2 lg:items-center"
+        class="group grid gap-8 py-16 border-b border-zinc-700 first:pt-8 data-[selected=true]:bg-zinc-800/50 lg:grid-cols-2 lg:items-center"
       >
         <img alt={img.alt} src={img.src} class="lg:group-even:col-start-2" />
         <div class="grid gap-2 lg:group-even:row-start-1 lg:group-even:col-start-1">
@@ -80,6 +80,5 @@
       </section>
     {/each}
   </div>
-  <hr class="border-zinc-700 my-8" />
   <Contact />
 </Page>
