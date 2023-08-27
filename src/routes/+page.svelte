@@ -1,5 +1,6 @@
 <script lang="ts">
   import Page from "$lib/components/primitives/Page.svelte";
+  import Contact from "$lib/components/segments/Contact.svelte";
 
   const screenshots = [
     {
@@ -55,6 +56,33 @@
     }
   ];
 
+  const work = [
+    {
+      place: "Wilson Electronics",
+      position: "Software Developer",
+      startDate: "Aug 2022",
+      endDate: "Current",
+    },
+    {
+      place: "Utah Tech University",
+      position: "Computer Science Tutor",
+      startDate: "January 2022",
+      endDate: "December 2022",
+    },
+    {
+      place: "Steamroller Copies",
+      position: "Print Tech & Customer Service Rep",
+      startDate: "January 2020",
+      endDate: "December 2021",
+    },
+    {
+      place: "Apollo Burger",
+      position: "Customer Service Rep",
+      startDate: "July 2017",
+      endDate: "November 2019",
+    },
+  ];
+
   const awards = [
     "Bachelor of Science in Computer Science Cum Laude",
     "Associate of Science in General Studies Honors",
@@ -86,11 +114,11 @@
 <Page title="Home - Shakespeare Dev" description="Home page and CV for Ian Shakespeare, Software Developer.">
   <section class="grid gap-4">
     <h4 class="text-2xl text-center md:text-3xl">Things I've worked on</h4>
-    <ul class="grid gap-2 md:grid-cols-2 lg:grid-cols-3">
+    <ul class="grid gap-2 justify-center md:grid-cols-[repeat(2,auto)] lg:grid-cols-[repeat(3,auto)]">
       {#each screenshots as {alt, src, href}}
         <li>
           <a href={href}>
-            <img alt={alt} src={src} class="border-8 border-transparent duration-300 rounded-md hover:border-zinc-700" />
+            <img alt={alt} src={src} width="325" height="220" class="border-8 border-transparent duration-300 rounded-md hover:border-zinc-700" />
           </a>
         </li>
       {/each}
@@ -103,14 +131,17 @@
       <div class="grid gap-4">
         <h5 class="text-xl text-zinc-300">{label}:</h5>
         <ul class="flex flex-wrap justify-center md:justify-start">
-        {#each icons as [icon, iconLabel]}
-          <li class="group/item grid content-start p-2 duration-300 rounded hover:bg-zinc-800/50">
-            <button class="group/btn peer cursor-default">
-              <i class={`text-8xl text-zinc-700 duration-300 group-hover/item:text-white group-focus/btn:text-white ${icon}`} />
-            </button>
-            <p class="h-0 pt-2 text-center overflow-hidden duration-300 group-hover/item:h-8 peer-focus:h-8">{iconLabel}</p>
-          </li>
-        {/each}
+          {#each icons as [icon, iconLabel]}
+            <li class="group/item grid content-start p-2 duration-300 rounded hover:bg-zinc-800/50">
+              <button class="group/btn peer cursor-default">
+                <i aria-hidden="true" class={`text-8xl text-zinc-700 duration-300 group-hover/item:text-white group-focus/btn:text-white ${icon}`} />
+                <span class="sr-only">show name</span>
+              </button>
+              <p class="h-0 pt-2 text-center overflow-hidden duration-300 group-hover/item:h-8 peer-focus:h-8">
+                {iconLabel}
+              </p>
+            </li>
+          {/each}
         </ul>
       </div>
     {/each}
@@ -119,12 +150,34 @@
     </p>
   </section>
   <hr class="border-zinc-700 my-8" />
-  <section class="grid gap-4 justify-center">
-    <h4 class="text-2xl text-center md:text-3xl">Education and Honors I've received</h4>
-    <ul>
-      {#each awards as award}
-        <li class="list-disc ml-4">{award}</li>
+  <section class="grid gap-8">
+    <h4 class="text-2xl text-center md:text-3xl">Places I've worked</h4>
+    <ul class="grid gap-2 justify-center md:grid-cols-2">
+      {#each work as { place, position, startDate, endDate }}
+        <li class="group grid gap-2 px-4 py-8 bg-zinc-800/50">
+          <h5 class="text-xl group-first:bg-gradient-to-r group-first:bg-clip-text group-first:text-transparent group-first:from-rose-400 group-first:to-amber-400 md:text-2xl">
+            {place}
+          </h5>
+          <p>{position}</p>
+          <p class="text-zinc-500">{startDate} - {endDate}</p>
+        </li>
       {/each}
     </ul>
   </section>
+  <hr class="border-zinc-700 my-8" />
+  <section class="grid gap-8 justify-center">
+    <h4 class="text-2xl text-center md:text-3xl">Education and Honors I've received</h4>
+    <ul class="grid gap-y-2 gap-x-4 md:grid-cols-2">
+      {#each awards as award}
+        <li class="group max-w-[300px] text-lg">
+          <span aria-hidden="true" class="inline-block bg-gradient-to-r bg-clip-text text-transparent group-odd:from-rose-400 group-odd:to-amber-400 group-even:from-emerald-400 group-even:to-blue-400">
+            {"•"}
+          </span>
+          {award}
+        </li>
+      {/each}
+    </ul>
+  </section>
+  <hr class="border-zinc-700 my-8" />
+  <Contact />
 </Page>

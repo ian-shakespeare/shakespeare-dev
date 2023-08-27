@@ -1,5 +1,6 @@
 <script lang="ts">
   import Page from "$lib/components/primitives/Page.svelte";
+  import Contact from "$lib/components/segments/Contact.svelte";
   import { page } from "$app/stores";
 
   const projects = [
@@ -60,7 +61,9 @@
 </script>
 
 <Page title="Projects - Shakespeare Dev" description="Projects page for Ian Shakespeare, Software Developer">
-  <h1 class="text-3xl text-center">A Couple Projects I've Worked On</h1>
+  <h1 class="text-3xl text-center mb-8 bg-gradient-to-r bg-clip-text text-transparent from-emerald-400 to-blue-400">
+    A Couple Projects I've Worked On
+  </h1>
   <div class="mt-4">
     {#each projects as { id, title, subtitle, description, img }}
       <section
@@ -77,4 +80,6 @@
       </section>
     {/each}
   </div>
+  <hr class="border-zinc-700 my-8" />
+  <Contact />
 </Page>
