@@ -13,5 +13,7 @@
   {/if}
 </svelte:head>
 <main class="relative max-w-[1240px] mx-auto z-10 px-6 md:px-12 lg:px-24">
-  <slot />
+  <div class="grid bg-zinc-900/75 backdrop-blur-sm p-4 pb-16">
+    <slot />
+  </div>
 </main>

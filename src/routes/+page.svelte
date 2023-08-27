@@ -19,40 +19,49 @@
     },
   ];
   
-  const technologyIcons = [
+  const technologies = [
     {
       label: "In production",
       icons: [
-        "devicon-typescript-plain",
-        "devicon-nextjs-original",
-        "devicon-react-original",
-        "devicon-github-original",
-        "devicon-go-original-wordmark",
-        "devicon-kotlin-plain",
-        "devicon-python-plain",
-        "devicon-javascript-plain",
-        "devicon-heroku-original",
+        ["devicon-typescript-plain", "TypeScript"],
+        ["devicon-nextjs-original", "NextJS"],
+        ["devicon-react-original", "React"],
+        ["devicon-github-original", "GitHub"],
+        ["devicon-go-original-wordmark", "Go"],
+        ["devicon-kotlin-plain", "Kotlin"],
+        ["devicon-python-plain", "Python"],
+        ["devicon-javascript-plain", "JavaScript"],
+        ["devicon-heroku-original", "Heroku"],
       ]
     },
     {
       label: "In projects",
       icons: [
-        "devicon-svelte-plain",
-        "devicon-cplusplus-plain",
-        "devicon-sqlite-plain",
-        "devicon-postgresql-plain",
-        "devicon-swift-plain",
-        "devicon-django-plain",
+        ["devicon-svelte-plain", "Svelte"],
+        ["devicon-cplusplus-plain", "C++"],
+        ["devicon-sqlite-plain", "SQLite"],
+        ["devicon-postgresql-plain", "PostgreSQL"],
+        ["devicon-swift-plain", "Swift"],
+        ["devicon-django-plain", "Django"],
       ]
     },
     {
       label: "For fun",
       icons: [
-        "devicon-rust-plain",
-        "devicon-csharp-plain",
-        "devicon-elixir-plain",
+        ["devicon-rust-plain", "Rust"],
+        ["devicon-csharp-plain", "C#"],
+        ["devicon-elixir-plain", "Elixir"],
       ]
     }
+  ];
+
+  const awards = [
+    "Bachelor of Science in Computer Science Cum Laude",
+    "Associate of Science in General Studies Honors",
+    "Service Learning Award 2022",
+    "University Spirit Award - Finalist",
+    "Service Learning Award 2021",
+    "JLPT N5 Certification",
   ];
 </script>
 
@@ -74,38 +83,48 @@
     </h3>
   </div>
 </header>
-<Page title="Home - Shakespeare Dev" description="TODO(ian) add a proper description">
-  <div class="grid bg-zinc-900/75 backdrop-blur-sm p-4 pb-16">
-    <section class="grid gap-4">
-      <h4 class="text-2xl text-center md:text-3xl">Things I've worked on</h4>
-      <ul class="grid gap-2 md:grid-cols-2 lg:grid-cols-3">
-        {#each screenshots as {alt, src, href}}
-          <li>
-            <a href={href}>
-              <img alt={alt} src={src} class="border-8 border-transparent duration-300 rounded-md hover:border-zinc-700" />
-            </a>
+<Page title="Home - Shakespeare Dev" description="Home page and CV for Ian Shakespeare, Software Developer.">
+  <section class="grid gap-4">
+    <h4 class="text-2xl text-center md:text-3xl">Things I've worked on</h4>
+    <ul class="grid gap-2 md:grid-cols-2 lg:grid-cols-3">
+      {#each screenshots as {alt, src, href}}
+        <li>
+          <a href={href}>
+            <img alt={alt} src={src} class="border-8 border-transparent duration-300 rounded-md hover:border-zinc-700" />
+          </a>
+        </li>
+      {/each}
+    </ul>
+  </section>
+  <hr class="border-zinc-700 my-8" />
+  <section class="grid gap-8 mb-8">
+    <h4 class="text-2xl text-center md:text-3xl">Technologies I've used</h4>
+    {#each technologies as {label, icons}}
+      <div class="grid gap-4">
+        <h5 class="text-xl text-zinc-300">{label}:</h5>
+        <ul class="flex flex-wrap justify-center md:justify-start">
+        {#each icons as [icon, iconLabel]}
+          <li class="group/item grid content-start p-2 duration-300 rounded hover:bg-zinc-800/50">
+            <button class="group/btn peer cursor-default">
+              <i class={`text-8xl text-zinc-700 duration-300 group-hover/item:text-white group-focus/btn:text-white ${icon}`} />
+            </button>
+            <p class="h-0 pt-2 text-center overflow-hidden duration-300 group-hover/item:h-8 peer-focus:h-8">{iconLabel}</p>
           </li>
         {/each}
-      </ul>
-    </section>
-    <hr class="border-zinc-700 my-8" />
-    <section class="grid gap-8">
-      <h4 class="text-2xl text-center md:text-3xl">Technologies I've used</h4>
-      {#each technologyIcons as {label, icons}}
-        <div class="grid gap-4">
-          <h5 class="text-xl text-zinc-300">{label}:</h5>
-          <ul class="flex flex-wrap gap-4 justify-center md:justify-left">
-          {#each icons as icon}
-            <li>
-              <i class={`text-8xl text-zinc-700 duration-300 cursor-pointer hover:text-white ${icon}`} />
-            </li>
-          {/each}
-          </ul>
-        </div>
+        </ul>
+      </div>
+    {/each}
+    <p class="text-zinc-600 text-center">
+      Icons provided by <a href="https://devicon.dev/" class="underline">Devicon</a>
+    </p>
+  </section>
+  <hr class="border-zinc-700 my-8" />
+  <section class="grid gap-4 justify-center">
+    <h4 class="text-2xl text-center md:text-3xl">Education and Honors I've received</h4>
+    <ul>
+      {#each awards as award}
+        <li class="list-disc ml-4">{award}</li>
       {/each}
-      <p class="text-zinc-600 text-center">
-        Icons provided by <a href="https://devicon.dev/" class="underline">Devicon</a>
-      </p>
-    </section>
-  </div>
+    </ul>
+  </section>
 </Page>

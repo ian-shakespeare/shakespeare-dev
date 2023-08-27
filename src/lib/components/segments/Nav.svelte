@@ -1,6 +1,6 @@
 <script lang="ts">
   import { page } from "$app/stores";
-  import {onMount} from "svelte";
+  import { onMount } from "svelte";
 
   let isOpen = false;
   let scrollPos = 0;
@@ -8,6 +8,7 @@
   const routes = [
     ["Home", "/"],
     ["Projects", "/projects"],
+    ["About", "/about"],
     ["Contact", "/contact"],
     ["GitHub", "/github"],
   ];
@@ -32,7 +33,7 @@
         <i class="fa-solid fa-xmark text-2xl" />
         <span class="sr-only">close nav</span>
       </button>
-      <ul class="grid lg:grid-cols-[repeat(4,1fr)] lg:justify-center lg:gap-2">
+      <ul class="grid lg:grid-cols-5 lg:justify-center lg:gap-2">
         {#each routes as [label, href]}
           <li data-current={href === path} class="text-3xl py-4 border-b border-zinc-600 duration-300 last:border-0 lg:border-0 lg:text-xl lg:data-[current=true]:bg-zinc-700/50 lg:hover:bg-zinc-800/50 lg:text-center lg:py-2">
             <a href={href} class="block">{label}</a>
