@@ -1,5 +1,5 @@
 <script lang="ts">
-  import "../app.css";
+  import "../../app.css";
   import Nav from "$lib/components/segments/Nav.svelte";
   import Particles from "svelte-particles";
   import { loadSlim } from "tsparticles-slim";
