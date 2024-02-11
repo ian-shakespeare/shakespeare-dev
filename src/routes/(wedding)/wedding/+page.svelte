@@ -174,10 +174,10 @@
       {/each}
     </ul>
   </section>
-  <button
-    on:click={() => alert("This does not work yet")}
+  <a
+    href="/wedding/register"
     class="absolute right-4 top-4 z-10 rounded-full border-[1px] border-amber-100 bg-transparent px-6 py-2 text-center text-amber-100 duration-300 hover:bg-amber-100 hover:text-black lg:right-8 lg:text-lg xl:right-12 xl:top-8 xl:text-xl"
   >
     RSVP
-  </button>
+  </a>
 </main>
