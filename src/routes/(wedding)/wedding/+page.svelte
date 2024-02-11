@@ -33,10 +33,11 @@
 </script>
 
 <svelte:head>
+  <title>Seina &amp; Ian - Wedding Home</title>
   <meta name="robots" content="noindex">
 </svelte:head>
 <main class="relative min-h-screen bg-black font-quicksand text-white">
-  <section class="relative grid h-screen justify-items-center lg:h-[80vh]">
+  <section class="relative grid h-screen justify-items-center lg:h-[85vh]">
     <div class="grid h-2/3 content-center lg:h-full">
       <ol class="grid grid-cols-4">
         {#each [
@@ -66,12 +67,12 @@
       alt="Ian and Seina looking across the desert"
       src="https://res.cloudinary.com/dpos2lw94/image/upload/v1707366255/engagement14_quo3y9.webp"
       srcSmall="https://res.cloudinary.com/dpos2lw94/image/upload/v1707366254/engagement14-small_ixudye.jpg"
-      class="absolute inset-0 -bottom-20 opacity-50 lg:inset-y-0"
+      class="absolute inset-0 -bottom-20 opacity-75 lg:inset-y-0"
       position="left"
     />
   </section>
-  <section class="relative z-10 grid gap-12 bg-black px-8 py-12">
-    <h2 class="text-center font-playfair text-5xl">Gallery</h2>
+  <section class="relative z-10 grid bg-stone-950 px-8 pb-12">
+    <h2 class="text-center font-playfair text-5xl bg-gradient-to-r from-black via-stone-800 to-black py-12">Gallery</h2>
     <ul class="grid gap-4 lg:grid-cols-6">
       {#each [
         [
@@ -166,7 +167,7 @@
               alt={alt}
               src={src}
               srcSmall={srcSmall}
-              class="h-full opacity-75 duration-300 hover:opacity-100 group-focus/btn:opacity-100"
+              class="h-full opacity-75 rounded duration-300 hover:opacity-100 group-focus/btn:opacity-100"
             />
           </button>
         </li>

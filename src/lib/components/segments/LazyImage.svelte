@@ -77,5 +77,6 @@
       data-[scale=true]:group-focus/btn:scale-105
       data-[scale=true]:group-hover/lazy:scale-105
     `}
+    style="border-radius:inherit;"
   />
 </div>
