@@ -78,8 +78,11 @@ export const POST: RequestHandler = async ({ request }) => {
     }),
   );
 
-  sendgrid.send(message);
+  try {
+    await sendgrid.send(message);
+  } catch {
+    throw error(503, "Error sending email, but registration succeeded.");
+  }
 
-  console.log(SENDGRID_KEY);
   return new Response("Created");
 };
